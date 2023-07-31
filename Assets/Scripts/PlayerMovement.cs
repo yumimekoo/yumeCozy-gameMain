@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashPower = 0.1f;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float jumpHeight = 20;
- 
+
 
 
 
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Dash());
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         float startTime = Time.time;
         canDash = false;
         isDashing = true;
-        while(Time.time < startTime + dashTime) 
+        while (Time.time < startTime + dashTime)
         {
             transform.Translate(Vector3.forward * dashPower);
 
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashCD);
         canDash = true;
-        
+
     }
 
     void Jump()
@@ -95,4 +95,3 @@ public class PlayerController : MonoBehaviour
         playerRb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
     }
 }
-
